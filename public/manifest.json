@@ -1,0 +1,26 @@
+{
+  "short_name": "WKND PWA",
+  "name": "AEM Guides WKND PWA",
+  "icons": [
+    {
+      "src": "favicon-32.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "favicon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/etc/aem-guides-wknd-pwa/index.html",
+  "display": "standalone",
+  "theme_color": "#FFEB00",
+  "background_color": "#202020"
+}

@@ -1,0 +1,8 @@
+.cmp-contentfragment__title {
+  margin-bottom: 1rem;
+}
+
+.cmp-contentfragment__elements { 
+  display: grid;
+  gap: 1rem;
+}

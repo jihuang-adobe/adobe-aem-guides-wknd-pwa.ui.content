@@ -1,0 +1,41 @@
+# Environment variables needs to be prefixed with `REACT_APP_`
+
+# REACT_APP_HOST_URI - Server namespace
+# For local development is likely http://localhost:4502
+# For deployment to an AEM environment, the value should be "/"
+# Can also be used with the static build mode and connected to a cloud instance - i.e. https://publish-p38809-e60526-cmstg.adobeaemcloud.com/
+REACT_APP_HOST_URI=http://localhost:4502
+
+# REACT_APP_GRAPHQL_ENDPOINT - GraphQL Endpoint URL
+REACT_APP_GRAPHQL_ENDPOINT=/content/_cq_graphql/global/endpoint.json
+
+# REACT_APP_AUTHORIZATION - Authorization
+# No authorization variable should be needed for accessing a production environment
+# Uncomment for Basic auth, and use AEM "user:pass" to access a local author environment
+# REACT_APP_AUTHORIZATION="admin:admin"
+
+# REACT_APP_PUBLIC_URI - The base URI the SPA is accessed from
+# Should be the URL if hosted statically - e.g. Github Pages - https://wknd-pwa.github.com/aem-guides-wknd-pwa
+# Should be `"` if hosted within AEM or running locally via `npm run start`
+REACT_APP_PUBLIC_URI=/
+
+# REACT_APP_SITE
+# The default name of the site created with the site-template-wknd-pwa
+# This value will be combined with the REACT_APP_CONTENT_PATH to find content to populate the PWA
+# See the src/utils/getContentPath.js file for usage
+REACT_APP_SITE=wknd-app
+
+# REACT_APP_CONTENT_PATH
+# The content path points to the home page of the site-template-wknd-spa
+# This value will be combined with REACT_APP_SITE to find content to populate the PWA
+# See the src/utils/getContentPath.js file for usage
+REACT_APP_CONTENT_PATH=/en/index
+
+# BUILD_PATH - Output of built files
+# The output folder for the `npm rum build` script
+BUILD_PATH=./docs
+
+# BUILD_MODE 
+# The BUILD_MODE constant is used in conjunction with the Proxy server and useGraphQL hook.
+# Uncomment for use with static hosting - e.g. Github Pages
+# REACT_APP_BUILD_MODE=static
