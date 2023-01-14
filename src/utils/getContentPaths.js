@@ -9,25 +9,28 @@ if (
   pathname.startsWith("/editor.html/content/") ||
   (pathname.includes("/content/") && pathname.endsWith("/en/index.html"))
 ) {
-
   defaultSite = pathname.replace("/content/", "").replace("/en/index.html", "");
   defaultContentPath = `/content/${defaultSite}/en/index`;
-
 } else {
   // For use remote use
   if (window.localStorage.getItem("aemGuidesWkndPwa.site") === null) {
-    window.localStorage.setItem("aemGuidesWkndPwa.site", defaultSite)
+    window.localStorage.setItem("aemGuidesWkndPwa.site", defaultSite);
   } else {
     defaultSite = window.localStorage.getItem("aemGuidesWkndPwa.site");
   }
 
   if (window.localStorage.getItem("aemGuidesWkndPwa.contentPath") === null) {
-    window.localStorage.setItem("aemGuidesWkndPwa.contentPath", defaultContentPath)
+    window.localStorage.setItem(
+      "aemGuidesWkndPwa.contentPath",
+      defaultContentPath
+    );
   } else {
-    defaultContentPath = window.localStorage.getItem("aemGuidesWkndPwa.contentPath");
+    defaultContentPath = window.localStorage.getItem(
+      "aemGuidesWkndPwa.contentPath"
+    );
   }
 }
 
-export const contentPathSuffix = REACT_APP_CONTENT_PATH;
+export const contentPathSuffix = "REACT_APP_CONTENT_PATH";
 export const contentPath = defaultContentPath;
 export const site = defaultSite;

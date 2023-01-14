@@ -6,14 +6,15 @@ NOTICE: Adobe permits you to use, modify, and distribute this file in
 accordance with the terms of the Adobe license agreement accompanying
 it.
 */
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { AEMHeadless } from "@adobe/aem-headless-client-js";
-import { externalizePaths } from '../utils';
+import { externalizePaths } from "../utils";
 
 const {
   REACT_APP_HOST_URI,
+  REACT_APP_HOST_PROXY,
   REACT_APP_GRAPHQL_ENDPOINT,
-  REACT_APP_AUTHORIZATION
+  REACT_APP_AUTHORIZATION,
 } = process.env;
 
 /**
@@ -27,13 +28,19 @@ export function useGraphQL(query, path) {
 
   useEffect(() => {
     const config = {
-      serviceURL: REACT_APP_HOST_URI,
+      serviceURL: REACT_APP_HOST_PROXY,
       endpoint: REACT_APP_GRAPHQL_ENDPOINT,
+      headers: {
+        "aem-url": REACT_APP_HOST_URI,
+      },
     };
-    if (REACT_APP_AUTHORIZATION) config.auth = REACT_APP_AUTHORIZATION.split(":");
+    if (REACT_APP_AUTHORIZATION)
+      config.auth = REACT_APP_AUTHORIZATION.split(":");
 
     const sdk = new AEMHeadless(config);
-    const request = query ? sdk.runQuery.bind(sdk) : sdk.runPersistedQuery.bind(sdk);
+    const request = query
+      ? sdk.runQuery.bind(sdk)
+      : sdk.runPersistedQuery.bind(sdk);
 
     request(query || path)
       .then(({ data, errors }) => {
@@ -46,7 +53,7 @@ export function useGraphQL(query, path) {
       });
   }, [query, path]);
 
-  return { graphQLData, errors }
+  return { graphQLData, errors };
 }
 
 /**
@@ -54,5 +61,7 @@ export function useGraphQL(query, path) {
  * @param {*} errors
  */
 export function mapErrors(errors) {
-  return errors.map((error) => error.message ? error.message : error).join(",");
+  return errors
+    .map((error) => (error.message ? error.message : error))
+    .join(",");
 }

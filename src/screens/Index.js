@@ -1,35 +1,69 @@
 import { Link } from "react-router-dom";
-import { V2Image, V2Title, } from "../components/aem";
+import { V2Image, V2Title } from "../components/aem";
 import { Theme } from "../theme";
 import { contentPath, initModelManager } from "../utils";
 import "./Index.css";
 
 export default function Index() {
-
   const pagePath = contentPath;
 
-  initModelManager(pagePath)
+  initModelManager(pagePath);
 
   return (
     <div className="content" style={styles.container}>
       <Link to="/adventures" style={styles.homepageHero}>
-        <div style={styles.homepageHeroImage} className="homepage-hero-image-wrapper">
-          <V2Image key="search-image" styles={styles.homepageHeroImage} pagePath={pagePath} itemPath="root/image" />
+        <div
+          style={styles.homepageHeroImage}
+          className="homepage-hero-image-wrapper"
+        >
+          <V2Image
+            key="search-image"
+            styles={styles.homepageHeroImage}
+            pagePath={pagePath}
+            itemPath="root/image"
+          />
         </div>
         <div style={styles.homepageHeroTitleSearch}>
           <div style={styles.homepageHeroTitle}>
-            <V2Title key="search-title" styles={styles.homepageHeroTitle} pagePath={pagePath} itemPath="root/title" />
+            <V2Title
+              key="search-title"
+              styles={styles.homepageHeroTitle}
+              pagePath={pagePath}
+              itemPath="root/title"
+            />
           </div>
-          <input style={styles.homepageHeroSearch} placeholder="Find Adventures Near You" />
+          <input
+            style={styles.homepageHeroSearch}
+            placeholder="Find Adventures Near You"
+          />
         </div>
       </Link>
       <Link to="/magazine" style={styles.homepageHero}>
-        <div style={styles.homepageHeroImage} className="homepage-hero-image-wrapper">
-          <V2Image key="featured-article-image" styles={styles.homepageHeroImage} pagePath={pagePath} itemPath="root/image-featured-articles" />
+        <div
+          style={styles.homepageHeroImage}
+          className="homepage-hero-image-wrapper"
+        >
+          <V2Image
+            key="featured-article-image"
+            styles={styles.homepageHeroImage}
+            pagePath={pagePath}
+            itemPath="root/image-featured-articles"
+          />
         </div>
         <div style={styles.homepageHeroTitleSearch}>
-          <div style={{ ...styles.homepageHeroTitle, textAlign: "left", paddingLeft: "1rem" }}>
-            <V2Title key="featured-article-title" styles={styles.homepageHeroTitle} pagePath={pagePath} itemPath="root/title-featured-articles" />
+          <div
+            style={{
+              ...styles.homepageHeroTitle,
+              textAlign: "left",
+              paddingLeft: "1rem",
+            }}
+          >
+            <V2Title
+              key="featured-article-title"
+              styles={styles.homepageHeroTitle}
+              pagePath={pagePath}
+              itemPath="root/title-featured-articles"
+            />
           </div>
         </div>
       </Link>
@@ -38,8 +72,7 @@ export default function Index() {
 }
 
 const styles = {
-  container: {
-  },
+  container: {},
   homepageHero: {
     flex: 1,
     position: "relative",
@@ -73,7 +106,7 @@ const styles = {
     border: "none",
     boxShadow: "0 0 5px rgba(0,0,0,.1)",
     width: "14rem",
-    textAlign: "center"
+    textAlign: "center",
   },
   adventureListContainer: {
     overflow: "hidden",
@@ -82,6 +115,6 @@ const styles = {
   adventureList: {
     display: "flex",
     flexDirection: "row",
-    overflowX: "auto"
+    overflowX: "auto",
   },
-}
+};

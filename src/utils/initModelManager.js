@@ -9,15 +9,15 @@ const config = { apiHost: apiHost };
 if (REACT_APP_AUTHORIZATION) {
   config.authorization = {
     basic: {
-      user: REACT_APP_AUTHORIZATION?.split(':')[0],
-      password: REACT_APP_AUTHORIZATION?.split(':')[1],
-    }
-  }
+      user: REACT_APP_AUTHORIZATION?.split(":")[0],
+      password: REACT_APP_AUTHORIZATION?.split(":")[1],
+    },
+  };
 }
 
 export const initModelManager = (path) => {
   ModelManager.initializeAsync({
     modelClient: new RemoteSpaModelClient(config),
-    path: path
+    path: path,
   });
-}
+};
